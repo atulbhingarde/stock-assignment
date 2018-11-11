@@ -2,6 +2,37 @@
 <html lang="en">
 
 <head>
+    
+        <script>
+            var mySymbols = new Array();
+            mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
+            </script>
+        </head>
+        <body>
+        
+        <!--p>Click the button to create a P element with some text, and append it to DIV.</p-->
+        
+        <div id="myDIV">
+        </div>
+        
+        <!--button onclick="myFunction()">Try it</button-->
+        
+        <script>
+        function myFunction() {
+            maxlength= mySymbols.length;
+            for(mysymbolsind=0;mysymbolsind<maxlength;mysymbolsind++)
+             {
+              var para = document.createElement("BUTTON");
+              var t = document.createTextNode(mySymbols[mysymbolsind]);
+              para.setAttribute("id", mySymbols[mysymbolsind]);
+
+              para.appendChild(t);
+              if ( ! document.getElementById(mySymbols[mysymbolsind]))
+              { document.getElementById("myDIV").appendChild(para); } 
+            }
+        }
+        </script>
+        
   <meta charset="UTF-8">
   <title>My ticker search and display</title>
   <!-- Bootstrap CSS CDN  -->
@@ -13,7 +44,7 @@
   <!-- Style to fix the issue of text extending past card length -->
   <link rel="stylesheet" href="./assets/css/style.css" />
   <script>
-  var mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
+  var mySymbols = new Array() = ['AAPL','FB','GOOG','NFLX','DOW']; 
   </script>
 
 </head>
@@ -36,21 +67,23 @@
     // var mySymbols = new Array();
     // var mySymbolsLength = mySymbols.length;
     var MyDebug= false ;
-    if ( typeof mySymbols == "undefined" || !(mySymbols instanceof Array )) 
+    if ( typeof mySymbols == "undefined" || ! ( mySymbols instanceof Array ) ) 
      {
-     MyDebug && alert("mySymbols is not an array");
-     var mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; }; 
+      MyDebug && alert("mySymbols is not an array"+ mySymbols);
+      // var mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
+      }; myFunction() ;
      var mySymbolsLength = mySymbols.length;
 
-     for(mySymbolIndex=0;mySymbolIndex<mySymbolsLength;mySymbolIndex++){
-     // lets show what we have 
-     MyDebug && alert(mySymbolIndex+ mySymbols[mySymbolIndex]);
-     var btn = document.createElement('BUTTON');
-     var t = document.createTextNode(mySymbols[mySymbolIndex]);
-     btn.appendChild(t)
-     // document.body.appendChild(btn);
-     document.body.prepend(btn);
-   }
+     /* for ( mySymbolIndex=0 ; mySymbolIndex<mySymbolsLength  ;mySymbolIndex++)
+      {
+      // lets show what we have 
+      MyDebug && alert(mySymbolIndex+ mySymbols[mySymbolIndex]);
+      var btn = document.createElement('BUTTON');
+      var t = document.createTextNode(mySymbols[mySymbolIndex]);
+      btn.appendChild(t)
+      // document.body.appendChild(btn);
+      document.body.prepend(btn);
+      } */
     </script>
     <!-- Row for Searching symbols for display -->
     <div class="row">

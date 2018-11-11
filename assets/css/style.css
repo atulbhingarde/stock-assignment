@@ -18,3 +18,16 @@ li {
 a:hover {
   text-decoration: none;
 }
+#myDIV {
+  width: 100%;
+  /* height: 400px; 
+  border: 1px solid black; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button1 {
+  height: 20px;
+  width: 100px;
+}

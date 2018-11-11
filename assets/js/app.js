@@ -117,7 +117,7 @@ $(function() {
 
     // Build the query URL for the ajax request to the NYT API
     const queryURL = buildQueryURL();
-
+    myFunction();
     // Make the AJAX request to the API - GETs the JSON data at the queryURL.
     // The data then gets passed as an argument to the render function
     // alert("here in renedering" + queryURL);
@@ -220,7 +220,7 @@ $(function() {
   // ==========================================================
 
   // .on('click') function associated with the Search Button
-  $('#run-search').on('click', search, addButtons());
+  $('#run-search').on('click', search);
 
   //  .on('click') function associated with the clear button
   $('#clear-all').on('click', clear);
