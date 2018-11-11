@@ -5,7 +5,7 @@ $(function() {
     // Get from the form the number of results to display
     // API doesn't have a 'limit' parameter, so we have to do this ourselves
     const numArticles = $('#article-count').val();
-    alert(NYTData.news);
+    // alert(NYTData.news);
     // const articles = NYTData.response.docs.slice(0, numArticles);
     const articles = NYTData.news.slice(0, numArticles);
 
@@ -120,7 +120,7 @@ $(function() {
 
     // Make the AJAX request to the API - GETs the JSON data at the queryURL.
     // The data then gets passed as an argument to the render function
-    alert("here in renedering" + queryURL);
+    // alert("here in renedering" + queryURL);
     $.ajax({
       url: queryURL,
       method: 'GET'
@@ -149,7 +149,7 @@ $(function() {
       queryURL = queryURL + queryParams + "/batch?types=news";
     // console.log(" here it is " + queryURL+ $('#search-term').val().trim()+"/batch?types=news" );
     console.log(" here it is " + queryURL );
-    alert(" length of existing array is "+mySymbols.length) ; 
+    // alert(" length of existing array is "+mySymbols.length) ; 
     TargetSymbol=$('#search-term').val().trim();
     for( mySymbolIndex=0 ; ( mySymbolIndex < mySymbolsLength ) && ( mySymbols[mySymbolIndex] !== TargetSymbol ); mySymbolIndex++)
     {
@@ -166,10 +166,10 @@ $(function() {
 
     if ( mySymbolIndex == mySymbolsLength )
      { mySymbols[mySymbols.length] = TargetSymbol ;
-      alert(" now array length is "+mySymbols.length);
+      // alert(" now array length is "+mySymbols.length);
       mySymbolsLength=mySymbols.length;
       for(mySymbolIndex=0;mySymbolIndex<mySymbolsLength;mySymbolIndex++){
-      alert(" this is after adding " + mySymbolIndex + " " + mySymbols[mySymbolIndex]);
+      // alert(" this is after adding " + mySymbolIndex + " " + mySymbols[mySymbolIndex]);
      }}
     
     // If the user provides a startYear, include it in the queryParams object
