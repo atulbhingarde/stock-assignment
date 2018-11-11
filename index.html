@@ -12,6 +12,10 @@
 
   <!-- Style to fix the issue of text extending past card length -->
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <script>
+  var mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
+  </script>
+
 </head>
 
 <body>
@@ -29,15 +33,18 @@
     
     <script>
     // alert("size here is"+  mySymbols.length);
-    
+    // var mySymbols = new Array();
+    // var mySymbolsLength = mySymbols.length;
+    var MyDebug= false ;
     if ( typeof mySymbols == "undefined" || !(mySymbols instanceof Array )) 
      {
+     MyDebug && alert("mySymbols is not an array");
      var mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; }; 
      var mySymbolsLength = mySymbols.length;
 
      for(mySymbolIndex=0;mySymbolIndex<mySymbolsLength;mySymbolIndex++){
      // lets show what we have 
-     // alert(mySymbolIndex+ mySymbols[mySymbolIndex]);
+     MyDebug && alert(mySymbolIndex+ mySymbols[mySymbolIndex]);
      var btn = document.createElement('BUTTON');
      var t = document.createTextNode(mySymbols[mySymbolIndex]);
      btn.appendChild(t)
@@ -144,8 +151,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <!-- Code to the JavaScript File -->
   <script src="./assets/js/app.js"></script>
-  <!--script>
-  displaySymbol()
+  <!-- script>
+  // displaySymbol()
+  addButtons();
   </script-->
 </body>
 

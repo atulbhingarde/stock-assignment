@@ -130,8 +130,8 @@ $(function() {
   const buildQueryURL = function () {
   
     // queryURL is the url we'll use to query the API
-    let queryURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?';
-    queryURL = "https://api.iextrading.com/1.0/stock/";
+    // let queryURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?';
+    let queryURL = "https://api.iextrading.com/1.0/stock/";
 
     // aapl/batch?types=news&range=1m&last=10" ;
   
@@ -149,27 +149,27 @@ $(function() {
       queryURL = queryURL + queryParams + "/batch?types=news";
     // console.log(" here it is " + queryURL+ $('#search-term').val().trim()+"/batch?types=news" );
     console.log(" here it is " + queryURL );
-    // alert(" length of existing array is "+mySymbols.length) ; 
+    MyDebug && alert(" length of existing array is "+mySymbols.length) ; 
     TargetSymbol=$('#search-term').val().trim();
     for( mySymbolIndex=0 ; ( mySymbolIndex < mySymbolsLength ) && ( mySymbols[mySymbolIndex] !== TargetSymbol ); mySymbolIndex++)
     {
      // did not find match so will continue till end
-     /* alert(" checking  "+ TargetSymbol + " with " + mySymbols[mySymbolIndex] );
+      MyDebug &&  alert(" checking  "+ TargetSymbol + " with " + mySymbols[mySymbolIndex] );
       if ( mySymbols[mySymbolIndex] === TargetSymbol ) {
-        alert(" matched |" + TargetSymbol + "| matches  ? java script did not ! |" + mySymbols[mySymbolIndex]+"|")
+        MyDebug && alert(" matched |" + TargetSymbol + "| matches  ? java script did not ! |" + mySymbols[mySymbolIndex]+"|")
 
     } else { 
-      alert(" huh so do you think |" + TargetSymbol + "| matches  ? java script did not ! |" + mySymbols[mySymbolIndex]+"|");
+      MyDebug && alert(" huh so do you think |" + TargetSymbol + "| matches  ? java script did not ! |" + mySymbols[mySymbolIndex]+"|");
 
-           }*/
+           }
     } 
 
     if ( mySymbolIndex == mySymbolsLength )
-     { mySymbols[mySymbols.length] = TargetSymbol ;
-      // alert(" now array length is "+mySymbols.length);
+     { mySymbols.push(TargetSymbol) ;
+      MyDebug && alert(" now array length is "+mySymbols.length+ mySymbols);
       mySymbolsLength=mySymbols.length;
       for(mySymbolIndex=0;mySymbolIndex<mySymbolsLength;mySymbolIndex++){
-      // alert(" this is after adding " + mySymbolIndex + " " + mySymbols[mySymbolIndex]);
+      MyDebug && alert(" this is after adding " + mySymbolIndex + " " + mySymbols[mySymbolIndex]);
      }}
     
     // If the user provides a startYear, include it in the queryParams object
@@ -200,8 +200,18 @@ $(function() {
     // console.log(queryURL);
     // return queryURL;
   }
-
-  // Function to empty out the articles
+  const addButtons = function (){
+    for( mySymbolIndex=0 ; mySymbolIndex < mySymbolsLength ; mySymbolIndex++ ){
+      // lets show what we have 
+      MyDebug && alert(mySymbolIndex+ mySymbols[mySymbolIndex]);
+      var btn = document.createElement('BUTTON');
+      var t = document.createTextNode(mySymbols[mySymbolIndex]);
+      btn.appendChild(t);
+      // document.body.appendChild(btn);
+      document.body.append(btn);
+    }
+  }
+  // Function to empty out the article
   const clear = function () {
     $('#article-section').empty();
   }
@@ -210,7 +220,7 @@ $(function() {
   // ==========================================================
 
   // .on('click') function associated with the Search Button
-  $('#run-search').on('click', search);
+  $('#run-search').on('click', search, addButtons());
 
   //  .on('click') function associated with the clear button
   $('#clear-all').on('click', clear);
