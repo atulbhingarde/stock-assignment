@@ -9,7 +9,7 @@ $(function() {
     // const articles = NYTData.response.docs.slice(0, numArticles);
     const articles = NYTData.news.slice(0, numArticles);
 
-
+    myFunction();
     articles.forEach(function(article) {
 
       // Append the article
@@ -86,7 +86,7 @@ $(function() {
 
     // return the date as a string in format 'Month DD, YYYY'
     return `${months[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`
-  }
+  };
   // set the base array 
   // get the length of array in variable so that we do not repeat same task again and agan
   // as the arrat ay this atage is constant
@@ -104,7 +104,31 @@ $(function() {
     document.body.prepend(btn);
     
   };*/
-
+  const isValidTicker = function (baseUrl, subjectTicker){
+    prompt(baseUrl);
+    retult = $.ajax({
+      url: basUrl,
+      method: 'GET'
+    });
+    prompt(result);
+  }
+  const RemoveThisGuy = function (thisbadboy) {
+    MyDebug = false;
+    // here will remove the elemnt from the array and remove corresponding button from scree as well
+    // for( ind=0;ind<mySymbols.length && mySymbols[ind] == thisbadboy ;ind++) 
+    for( ind=0;ind< mySymbols.length ;ind++) 
+     if ( thisbadboy === mySymbols[ind] ) 
+      {
+        MyDebug && alert("before "+ mySymbols ) ; 
+        MyDebug && alert(thisbadboy + " " + mySymbols[ind] ) ; 
+        var tt = mySymbols.splice(ind) ; 
+        MyDebug && alert("after "+ mySymbols ) ; 
+        // locate the button for bad boy and delete it 
+        var elem = document.getElementById(thisbadboy);
+        elem.parentNode.removeChild(elem);
+      } 
+     
+  }
   const search = function (event) {
 
     // This line allows us to take advantage of the HTML 'submit' property
@@ -116,23 +140,33 @@ $(function() {
     clear();
 
     // Build the query URL for the ajax request to the NYT API
+    // check if the ticker is valid 
+    // isValidTicker(baseUrl,"APPL");
+
     const queryURL = buildQueryURL();
     myFunction();
     // Make the AJAX request to the API - GETs the JSON data at the queryURL.
     // The data then gets passed as an argument to the render function
     // alert("here in renedering" + queryURL);
+    /* $.ajax({
+      url: queryURL,
+      method: 'GET',
+      statusCode: { 404: function() { alert("page not found " + queryURL ); ; } }
+    }).then(render);*/
     $.ajax({
       url: queryURL,
-      method: 'GET'
+      method: 'GET',
+      statusCode: { 404 : function() { alert("hi page not found " + queryURL +  " " + queryParams ) ; RemoveThisGuy(queryParams) ; myFunction(); } },
     }).then(render);
   }
-
+  
   const buildQueryURL = function () {
   
     // queryURL is the url we'll use to query the API
     // let queryURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?';
     let queryURL = "https://api.iextrading.com/1.0/stock/";
-    let baseUrl = "https://api.iextrading.com/1.0/ref-data/symbols"; 
+    alert(baseUrl);
+    // let baseUrl = "https://api.iextrading.com/1.0/ref-data/symbols"; 
 
     // aapl/batch?types=news&range=1m&last=10" ;
   
@@ -203,6 +237,10 @@ $(function() {
   }
   const checkMyTicker = function (){
     // this part checks if the ticker exists 
+    $.ajax({
+      url: baseUrl,
+      method: 'GET'
+    }).then(render);
   }
   const addButtons = function (){
     for( mySymbolIndex=0 ; mySymbolIndex < mySymbolsLength ; mySymbolIndex++ ){
@@ -225,6 +263,7 @@ $(function() {
 
   // .on('click') function associated with the Search Button
   $('#run-search').on('click', search);
+  // $('#run-search').on('click', checkMyTicker());
 
   //  .on('click') function associated with the clear button
   $('#clear-all').on('click', clear);

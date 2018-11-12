@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    
+    <!--script>
+         if ( typeof mySymbols == "undefined" || ! ( mySymbols instanceof Array ) ) 
+          {
+           var mySymbols = new Array();
+           mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
+           promt("did initialize");
+          } else ( prompt("list of symbols  " + mySymbols + " exists"))
+    </script>
+    </head-->
+    <!--script>
+        if ( typeof mySymbols == "undefined" || ! ( mySymbols instanceof Array ) ) 
+         {
+          var mySymbols = new Array();
+          mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
+          promt("did initialize");
+         } else ( prompt("list of symbols  " + mySymbols + " exists"))
+   </script-->
+    <!--body>
         <script>
+            if ( typeof mySymbols == "undefined" || ! ( mySymbols instanceof Array ) ) 
+             {
+              var mySymbols = new Array();
+              mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
+              promt("did initialize");
+             } else ( prompt("list of symbols  " + mySymbols + " exists"))
+       </script-->
+    
+<head>
+    <script>
+        if ( typeof mySymbols == "undefined" || ! ( mySymbols instanceof Array ) ) 
+         {
+          var mySymbols = new Array();
+          mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
+          promt("did initialize");
+         } else ( prompt("list of symbols  " + mySymbols + " exists"))
+   </script>
+        <!--script>
             var mySymbols = new Array();
             mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
-            </script>
+            </script-->
         </head>
         <body>
         
@@ -18,6 +51,8 @@
         <!--button onclick="myFunction()">Try it</button-->
         
         <script>
+        var baseUrl = "https://api.iextrading.com/1.0/ref-data/symbols"; 
+
         function myFunction() {
             maxlength= mySymbols.length;
             for(mysymbolsind=0;mysymbolsind<maxlength;mysymbolsind++)
@@ -43,9 +78,9 @@
 
   <!-- Style to fix the issue of text extending past card length -->
   <link rel="stylesheet" href="./assets/css/style.css" />
-  <script>
+  <!--script>
   var mySymbols = new Array() = ['AAPL','FB','GOOG','NFLX','DOW']; 
-  </script>
+  </script-->
 
 </head>
 
