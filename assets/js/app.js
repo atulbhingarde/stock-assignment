@@ -201,6 +201,9 @@ $(function() {
     // console.log(queryURL);
     // return queryURL;
   }
+  const checkMyTicker = function (){
+    // this part checks if the ticker exists 
+  }
   const addButtons = function (){
     for( mySymbolIndex=0 ; mySymbolIndex < mySymbolsLength ; mySymbolIndex++ ){
       // lets show what we have 
