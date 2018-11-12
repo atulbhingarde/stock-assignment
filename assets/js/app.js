@@ -165,7 +165,7 @@ $(function() {
     // queryURL is the url we'll use to query the API
     // let queryURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?';
     let queryURL = "https://api.iextrading.com/1.0/stock/";
-    alert(baseUrl);
+    MyDebug && alert(baseUrl);
     // let baseUrl = "https://api.iextrading.com/1.0/ref-data/symbols"; 
 
     // aapl/batch?types=news&range=1m&last=10" ;
