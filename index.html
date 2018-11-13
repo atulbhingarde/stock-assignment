@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+    <script>
+     MyDebug = false ;
+    </script>
     <!--script>
          if ( typeof mySymbols == "undefined" || ! ( mySymbols instanceof Array ) ) 
           {
            var mySymbols = new Array();
            mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
-           promt("did initialize");
-          } else ( prompt("list of symbols  " + mySymbols + " exists"))
+           MyDebug && alert("did initialize");
+          } else ( MyDebug && alert("list of symbols  " + mySymbols + " exists"))
     </script>
     </head-->
     <!--script>
@@ -14,8 +17,8 @@
          {
           var mySymbols = new Array();
           mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
-          promt("did initialize");
-         } else ( prompt("list of symbols  " + mySymbols + " exists"))
+          MyDebug && alert("did initialize");
+         } else ( MyDebug && alert("list of symbols  " + mySymbols + " exists"))
    </script-->
     <!--body>
         <script>
@@ -23,8 +26,8 @@
              {
               var mySymbols = new Array();
               mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
-              promt("did initialize");
-             } else ( prompt("list of symbols  " + mySymbols + " exists"))
+              MyDebug && alert("did initialize");
+             } else ( MyDebug && alert("list of symbols  " + mySymbols + " exists"))
        </script-->
     
 <head>
@@ -33,8 +36,8 @@
          {
           var mySymbols = new Array();
           mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
-          promt("did initialize");
-         } else ( prompt("list of symbols  " + mySymbols + " exists"))
+          MyDebug && alert("did initialize");
+         } else ( MyDebug && alert("list of symbols  " + mySymbols + " exists"))
    </script>
         <!--script>
             var mySymbols = new Array();
@@ -98,7 +101,7 @@
     </div>
     
     <script>
-    // alert("size here is"+  mySymbols.length);
+    // MyDebug && alert("size here is"+  mySymbols.length);
     // var mySymbols = new Array();
     // var mySymbolsLength = mySymbols.length;
     var MyDebug= false ;

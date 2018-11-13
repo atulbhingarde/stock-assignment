@@ -247,6 +247,7 @@ $(function() {
       // lets show what we have 
       MyDebug && alert(mySymbolIndex+ mySymbols[mySymbolIndex]);
       var btn = document.createElement('BUTTON');
+      btn.onclick = function() { alert('you clicked me one '+btn.TEXT_NODE)}
       var t = document.createTextNode(mySymbols[mySymbolIndex]);
       btn.appendChild(t);
       // document.body.appendChild(btn);
