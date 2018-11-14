@@ -107,6 +107,7 @@ $(function() {
   const isValidTicker = function (baseUrl, subjectTicker){
     prompt(baseUrl);
     retult = $.ajax({
+      async: false, 
       url: basUrl,
       method: 'GET'
     });
@@ -242,18 +243,8 @@ $(function() {
       method: 'GET'
     }).then(render);
   }
-  const addButtons = function (){
-    for( mySymbolIndex=0 ; mySymbolIndex < mySymbolsLength ; mySymbolIndex++ ){
       // lets show what we have 
-      MyDebug && alert(mySymbolIndex+ mySymbols[mySymbolIndex]);
-      var btn = document.createElement('BUTTON');
-      btn.onclick = function() { alert('you clicked me one '+btn.TEXT_NODE)}
-      var t = document.createTextNode(mySymbols[mySymbolIndex]);
-      btn.appendChild(t);
       // document.body.appendChild(btn);
-      document.body.append(btn);
-    }
-  }
   // Function to empty out the article
   const clear = function () {
     $('#article-section').empty();

@@ -54,15 +54,23 @@
         <!--button onclick="myFunction()">Try it</button-->
         
         <script>
+        function reply_click(clicked_id)
+{
+    alert(clicked_id);
+}
         var baseUrl = "https://api.iextrading.com/1.0/ref-data/symbols"; 
 
         function myFunction() {
-            maxlength= mySymbols.length;
-            for(mysymbolsind=0;mysymbolsind<maxlength;mysymbolsind++)
+            var maxlength = mySymbols.length;
+            var mysymbolsind;
+            for(var mysymbolsind=0; mysymbolsind < maxlength ; mysymbolsind++)
              {
               var para = document.createElement("BUTTON");
               var t = document.createTextNode(mySymbols[mysymbolsind]);
+              // para.onclick = function() { alert("this is "+ mySymbols[mysymbolsind]) + " button "};
+              // para.onClick="alert('ha ha ' + mysymbolsind )" ; 
               para.setAttribute("id", mySymbols[mysymbolsind]);
+              para.setAttribute("onClick",`reply_click('${mySymbols[mysymbolsind]}')`);
 
               para.appendChild(t);
               if ( ! document.getElementById(mySymbols[mysymbolsind]))
@@ -112,16 +120,7 @@
       }; myFunction() ;
      var mySymbolsLength = mySymbols.length;
 
-     /* for ( mySymbolIndex=0 ; mySymbolIndex<mySymbolsLength  ;mySymbolIndex++)
-      {
-      // lets show what we have 
-      MyDebug && alert(mySymbolIndex+ mySymbols[mySymbolIndex]);
-      var btn = document.createElement('BUTTON');
-      var t = document.createTextNode(mySymbols[mySymbolIndex]);
-      btn.appendChild(t)
-      // document.body.appendChild(btn);
-      document.body.prepend(btn);
-      } */
+     
     </script>
     <!-- Row for Searching symbols for display -->
     <div class="row">
