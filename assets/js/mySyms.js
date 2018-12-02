@@ -1,0 +1,1 @@
+const mySymbols = ['AAPL','FB','GOOG','NFLX'];

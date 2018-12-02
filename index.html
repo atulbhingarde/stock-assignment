@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <script>
+    <!--script>
      MyDebug = false ;
-    </script>
+    </script-->
     <head>
-    <script>
+    <!--script src="./assets/js/app1.js"></script-->
+
+    <!--script>
         if ( typeof mySymbols == "undefined" || ! ( mySymbols instanceof Array ) ) 
          {
           var mySymbols = new Array();
           mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
           MyDebug && alert("did initialize");
          } else ( MyDebug && alert("list of symbols  " + mySymbols + " exists"))
-   </script>
+   </script-->
         
         </head>
         <body>
@@ -19,11 +21,12 @@
         <!--p>Click the button to create a P element with some text, and append it to DIV.</p-->
         
         <div id="myDIV">
+          <!--script>init</script-->
         </div>
         
         <!--button onclick="myFunction()">Try it</button-->
         
-        <script>
+        <!--script>
         function reply_click(clicked_id)
 {
     alert(clicked_id);
@@ -48,10 +51,11 @@
               { document.getElementById("myDIV").appendChild(para); } 
             }
         }
-        </script>
+        </script-->
         
   <meta charset="UTF-8">
   <title>My ticker search and display</title>
+  
   <!-- Bootstrap CSS CDN  -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
 
@@ -81,14 +85,13 @@
     // MyDebug && alert("size here is"+  mySymbols.length);
     // var mySymbols = new Array();
     // var mySymbolsLength = mySymbols.length;
-    var MyDebug= false ;
-    if ( typeof mySymbols == "undefined" || ! ( mySymbols instanceof Array ) ) 
+    // var MyDebug= false ;
+    /* if ( typeof mySymbols == "undefined" || ! ( mySymbols instanceof Array ) ) 
      {
       MyDebug && alert("mySymbols is not an array"+ mySymbols);
-      // var mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
+      var mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
       }; myFunction() ;
-     var mySymbolsLength = mySymbols.length;
-
+    var mySymbolsLength = mySymbols.length; */
      
     </script>
     <!-- Row for Searching symbols for display -->
@@ -136,7 +139,7 @@
               </div>
 
               <!-- Here we have our final submit button -->
-              <button type="submit" class="btn btn-default" id="run-search">
+              <button type="submit" class="btn btn-default" onclick=searchMe() id="run-search">
                 <i class="fa fa-search"></i> Search</button>
               <button class="btn btn-default" id="clear-all">
                 <i class="fa fa-trash"></i> Clear Results</button>
@@ -158,7 +161,7 @@
           <!-- card Heading for the retrieved articles box -->
           <div class="card-header">
             <strong>
-              <i class="fa fa-table"></i> Top Articles</strong>
+              <i class="fa fa-table"></i>Company Info</strong>
           </div>
 
           <!-- This main card will hold each of the resulting articles -->
@@ -189,7 +192,8 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <!-- Code to the JavaScript File -->
-  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/mySyms.js"></script>
+  <script src="./assets/js/app1.js"></script>
   
 </body>
 

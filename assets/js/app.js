@@ -1,4 +1,14 @@
-$(function() {
+MyDebug = false ;
+mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
+
+if ( typeof mySymbols == "undefined" || ! ( mySymbols instanceof Array ) ) 
+  {
+    var mySymbols = new Array();
+    MyDebug && alert("did initialize");
+  } 
+  else { ( MyDebug && alert("list of symbols  " + mySymbols + " exists")) ; } ;
+
+ $(function() {
 
   const render = function (NYTData) {
 
