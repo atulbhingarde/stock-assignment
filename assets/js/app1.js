@@ -1,4 +1,3 @@
-// $(function(){
 
 const MyDebug = false ;
 const baseUrl = "https://api.iextrading.com/1.0/ref-data/symbols"; 
@@ -11,12 +10,7 @@ if ( typeof firstTime === undefined ) {  var firstTime = true; }
 console.log(firstTime) ;
 var mySymbols = ['AAPL','FB','GOOG','NFLX']; 
 
-// var mySymbols = Array(); 
-// https://api.iextrading.com/1.0/stock/aapl/batch?types=quote to check if its a valid ticker 
 
-// if ( typeof mySymbols === 'undefined' ) { const mySymbols = ['AAPL','FB','GOOG','NFLX']; }
-// ['AAPL','FB','GOOG','NFLX'];
-// var mySymbols = Array(); 
 function testFunc () {
     if ( firstTime === true ) 
      {
@@ -39,56 +33,44 @@ function Once(){
 }
 function init1()
  {
-  // if ( ( typeof mySymbols === undefined ) )  { mySymbols = ['AAPL','FB','GOOG','NFLX']; } 
-  /* if (typeof mySymbols == "undefined" || !(mySymbols instanceof Array)) {
-    var mySymbols = ['AAPL','FB','GOOG','NFLX'] ;
-}*/
-  // Once();
+  
   
   if ( ( typeof mySymbols === undefined ) || !( mySymbols instanceof Array ) ) 
      {
-      // var mySymbols = new Array();
-      // mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
-      // initSym() ; 
+      
       MyDebug && alert("current "+mySymbols);
       myRender();
      } 
   myRender();
-  /*for(let sym=0;sym<mySymbols.length;sym++) 
-   {
-    MyDebug && alert("Hi"+mySymbols[sym]);
-    // masterSymbols = 
-    $('#myDIV').append('<button onclick="reply_click(this)" >'+mySymbols[sym]+'</button>');
-    
-    MyUrl = baseUrl1+mySymbols[sym]+"/batch?types=news"; // for news 
-    MyUrl = baseUrl1+mySymbols[sym]+"/batch?types=quote"; // for news 
-
-    // console.log(MyUrl);
-    isitValid = checkMyTicker(MyUrl);
-    // buildQueryURL(mySymbols[sym]);
-   } */
-   // checkMyTicker();
- };
- // window.onload = testFunc;
- // testFunc();
+  
+ }
+ 
  init1();
- function checkMyTicker(thisUrl){
-    // isValidSym=false;
+ function checkMyTicker(thisUrl, myTicker){
+    isValidSym=true;
     // this part checks if the ticker exists 
     console.log(thisUrl);
     $.ajax({
-      url: thisUrl,
-      method: 'GET'
-    }).then( function(response) { 
-                                MyDebug && alert( thisUrl ); 
-                                MyDebug && alert( response ); 
-                                alert(response.status + " " + thisUrl);
-                                // console.log(response.news[0].source);
-                                lcompanyName = response.quote.companyName ; 
-                                console.log(lcompanyName);
-                                isValidSym = ( lcompanyName !== 'undefined' ) ;     
-                                // return isValidSym;                       
-                                } ) ; // + response.companyName));
+              url: thisUrl,
+              type: 'GET',
+              success: function(response) 
+               { 
+                MyDebug && alert(thisUrl + " looks ok" );
+                if ( mySymbols.indexOf(myTicker) === -1  ) 
+                  { 
+                    mySymbols.push(myTicker) ; 
+                    MyDebug && alert( mySymbols );
+                    myRender();
+                  }
+                },
+              error: function(response) 
+               {
+                alert( ' woops! symbol ' + myTicker + " " + thisUrl + ' does not work it retutrned ' + response.status ); //or whatever
+                                     
+               }
+           }
+          );
+    
     return isValidSym ; 
   }
    
@@ -135,14 +117,14 @@ function searchMe(){
      MyDebug && alert(thisTick);
      // check if this symbol is a valid symbol by using proper API call
      MyUrl = baseUrl1+thisTick+"/batch?types=quote" ; 
-     isitValid = checkMyTicker(MyUrl);
+     isitValid = checkMyTicker(MyUrl, thisTick);
      console.log(MyUrl + " is " + isitValid ) ;
-     if ( ( isitValid === true ) && ( mySymbols.indexOf(thisTick) === -1  ) ) 
+     /* if ( ( isitValid === true ) && ( mySymbols.indexOf(thisTick) === -1  ) ) 
       { 
         mySymbols.push(thisTick) ; 
         alert(mySymbols);
         myRender();
-      }
+      }*/
     }
    else 
     { alert(TickerSym + "appears to be undefined is it ?");}
@@ -171,18 +153,8 @@ function myRender() {
 const buildQueryURL = function (thisSymbol) {
   
     // queryURL is the url we'll use to query the API
-    // let queryURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?';
     let queryURL = "https://api.iextrading.com/1.0/stock/";
     MyDebug && alert(baseUrl);
-    // let baseUrl = "https://api.iextrading.com/1.0/ref-data/symbols"; 
-
-    // aapl/batch?types=news&range=1m&last=10" ;
-  
-    // https://iextrading.com/developer/docs/#stocks";
-    // Begin building an object to contain our API call's query parameters
-    // Set the API key
-    // var queryParams = { 'api-key': 'b9f91d369ff59547cd47b931d8cbc56b:0:74623931' };
-    // const queryParams = { 'api-key': '59d9d23944844349af23e27e6c934b84' };
     queryParams = {};
     // console.log(queryURL);
     // Grab text the user typed into the search input, add to the queryParams object
@@ -240,11 +212,7 @@ const buildQueryURL = function (thisSymbol) {
     console.log('---------------\nURL: ' + queryURL + '\n---------------');
     console.log(queryURL + $.param(queryParams));
 
-    // return "https://api.iextrading.com/1.0/stock/aapl/batch?types=news&range=1m&last=10";
-    // return "https://api.iextrading.com/1.0/stock/aapl/batch?types=news&range=1m&last=10";
     return queryURL; // # + $.param(queryParams);
-    // console.log(queryURL);
-    // return queryURL;
   };
 // });
 
