@@ -80,8 +80,9 @@ function init1()
       url: thisUrl,
       method: 'GET'
     }).then( function(response) { 
-                                MyDebug && alert(thisUrl); 
-                                MyDebug && alert(response); 
+                                MyDebug && alert( thisUrl ); 
+                                MyDebug && alert( response ); 
+                                alert(response.status + " " + thisUrl);
                                 // console.log(response.news[0].source);
                                 lcompanyName = response.quote.companyName ; 
                                 console.log(lcompanyName);
@@ -103,8 +104,8 @@ function reply_click(clicked_id)
     url: MyUrl,
     method: 'GET'
   }).then( function(response) { 
-                              MyDebug && alert(MyUrl); 
-                              MyDebug && alert(response); 
+                              MyDebug && alert( MyUrl ); 
+                              MyDebug && alert( response ); 
                               // console.log(response.news[0].source);
                               lcompanyName = response.quote.companyName ;
                               latestPrice =  response.quote.latestPrice ;
