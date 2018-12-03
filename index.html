@@ -1,58 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    <script>
-     MyDebug = false ;
-    </script>
-    <head>
-    <!--script src="./assets/js/app1.js"></script-->
 
-    <script>
-      /* window.onload = function() {
-        if ( typeof mySymbols === 'undefined' || ! ( mySymbols instanceof Array ) ) 
-         {
-          // var mySymbols = new Array();
-          var mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
-          MyDebug && alert("did initialize");
-         } else ( MyDebug && alert("list of symbols  " + mySymbols + " exists")) } */
-   </script>
+  <body>
+  <head>
         
-        </head>
-        <body>
         
-        <!--p>Click the button to create a P element with some text, and append it to DIV.</p-->
-        
-        <div id="myDIV">
-          <!--script>init</script-->
-        </div>
-        
-        <!--button onclick="myFunction()">Try it</button-->
-        
-        <!--script>
-        function reply_click(clicked_id)
-{
-    alert(clicked_id);
-}
-        var baseUrl = "https://api.iextrading.com/1.0/ref-data/symbols"; 
-
-        function myFunction() {
-            var maxlength = mySymbols.length;
-            var mysymbolsind;
-            for(var mysymbolsind=0; mysymbolsind < maxlength ; mysymbolsind++)
-             {
-              var para = document.createElement("BUTTON");
-              var t = document.createTextNode(mySymbols[mysymbolsind]);
-              // para.onclick = function() { alert("this is "+ mySymbols[mysymbolsind]) + " button "};
-              // para.onClick="alert('ha ha ' + mysymbolsind )" ; 
-              para.setAttribute("id", mySymbols[mysymbolsind]);
-
-              para.setAttribute("onClick",`reply_click('${mySymbols[mysymbolsind]}')`);
-
-              para.appendChild(t);
-              if ( ! document.getElementById(mySymbols[mysymbolsind]))
-              { document.getElementById("myDIV").appendChild(para); } 
-            }
-        }
-        </script-->
         
   <meta charset="UTF-8">
   <title>My ticker search and display</title>
@@ -82,21 +34,13 @@
       </h1>
     </div>
     
-    <script>
-    // MyDebug && alert("size here is"+  mySymbols.length);
-    // var mySymbols = new Array();
-    // var mySymbolsLength = mySymbols.length;
-    // var MyDebug= false ;
-    /* if ( typeof mySymbols == "undefined" || ! ( mySymbols instanceof Array ) ) 
-     {
-      MyDebug && alert("mySymbols is not an array"+ mySymbols);
-      var mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
-      }; myFunction() ;
-    var mySymbolsLength = mySymbols.length; */
-     
-    </script>
+    
+    
     <!-- Row for Searching symbols for display -->
     <div class="row">
+        <div id="myDIV">
+            <!--script>init</script-->
+          </div>
       <div class="col-sm-12">
         <br>
         <!-- First card is for handling the search parameters -->
