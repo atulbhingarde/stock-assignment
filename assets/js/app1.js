@@ -1,27 +1,35 @@
+// $(function(){
+
 const MyDebug = false ;
 const baseUrl = "https://api.iextrading.com/1.0/ref-data/symbols"; 
 
 const baseUrl1 = "https://api.iextrading.com/1.0/stock/" ; //  to check if its a valid ticker 
 
-var isValidSym = true ; 
+var isValidSym = true;
 var firstTime = true; 
-var mySymbols = Array(); 
+if ( typeof firstTime === undefined ) {  var firstTime = true; }
+console.log(firstTime) ;
+var mySymbols = ['AAPL','FB','GOOG','NFLX']; 
+
+// var mySymbols = Array(); 
 // https://api.iextrading.com/1.0/stock/aapl/batch?types=quote to check if its a valid ticker 
 
 // if ( typeof mySymbols === 'undefined' ) { const mySymbols = ['AAPL','FB','GOOG','NFLX']; }
 // ['AAPL','FB','GOOG','NFLX'];
 // var mySymbols = Array(); 
 function testFunc () {
-    if ( firstTime === true ) {
-    // var mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
-    console.log("loading this should appear only once");
-    init1(); 
+    if ( firstTime === true ) 
+     {
+     var mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
+     console.log("loading this should appear only once");
+     init1(); 
+     firstTime = false; 
+     
     }
-    else { alert("will not execute any as we are here not for first time " ) ; return ;}
-    firstTime = false ; 
+    else { alert("will not execute any as we are here not for first time " ); firstTime = false;}
     
   };
-  
+
 function Once(){
     mySymbols = ['AAPL','FB','GOOG','NFLX'] ;
 
@@ -35,16 +43,18 @@ function init1()
   /* if (typeof mySymbols == "undefined" || !(mySymbols instanceof Array)) {
     var mySymbols = ['AAPL','FB','GOOG','NFLX'] ;
 }*/
-  Once();
-  if ( ( typeof mySymbols === undefined ) || ! ( mySymbols instanceof Array ) ) 
+  // Once();
+  
+  if ( ( typeof mySymbols === undefined ) || !( mySymbols instanceof Array ) ) 
      {
       // var mySymbols = new Array();
       // mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
-      initSym() ; 
-      MyDebug && alert("did initialize");
-      myFunction() ;
+      // initSym() ; 
+      MyDebug && alert("current "+mySymbols);
+      myRender();
      } 
-  for(let sym=0;sym<mySymbols.length;sym++) 
+  myRender();
+  /*for(let sym=0;sym<mySymbols.length;sym++) 
    {
     MyDebug && alert("Hi"+mySymbols[sym]);
     // masterSymbols = 
@@ -56,10 +66,12 @@ function init1()
     // console.log(MyUrl);
     isitValid = checkMyTicker(MyUrl);
     // buildQueryURL(mySymbols[sym]);
-   }
+   } */
    // checkMyTicker();
  };
- window.onload = testFunc;
+ // window.onload = testFunc;
+ // testFunc();
+ init1();
  function checkMyTicker(thisUrl){
     // isValidSym=false;
     // this part checks if the ticker exists 
@@ -82,16 +94,17 @@ function init1()
         
 function reply_click(clicked_id)
 {
- thisTick = clicked_id.innerText;
- alert(thisTick);
+ // thisTick = clicked_id.innerText;
+ thisTick = clicked_id ; 
+ MyDebug &&  alert(thisTick);
  MyUrl = baseUrl1+thisTick+"/batch?types=quote,news,company&range=5y&last=400" ; 
  console.log(MyUrl+" for additional info "); 
  $.ajax({
     url: MyUrl,
     method: 'GET'
   }).then( function(response) { 
-                              alert(MyUrl); 
-                              alert(response); 
+                              MyDebug && alert(MyUrl); 
+                              MyDebug && alert(response); 
                               // console.log(response.news[0].source);
                               lcompanyName = response.quote.companyName ;
                               latestPrice =  response.quote.latestPrice ;
@@ -113,6 +126,8 @@ function reply_click(clicked_id)
 }
 function searchMe(){
     TickerSym = document.getElementById('search-term');
+    event.preventDefault();
+    // firstTime = false ; 
     if ( TickerSym !== 'undefined' ) 
      {
      thisTick = TickerSym.value ; 
@@ -125,14 +140,14 @@ function searchMe(){
       { 
         mySymbols.push(thisTick) ; 
         alert(mySymbols);
-        myFunction();
+        myRender();
       }
     }
    else 
     { alert(TickerSym + "appears to be undefined is it ?");}
 
 }
-function myFunction() {
+function myRender() {
  var maxlength = mySymbols.length;
  // var mysymbolsind;
  for(var mysymbolsind=0; mysymbolsind < maxlength ; mysymbolsind++)
@@ -229,6 +244,7 @@ const buildQueryURL = function (thisSymbol) {
     return queryURL; // # + $.param(queryParams);
     // console.log(queryURL);
     // return queryURL;
-  }
- 
+  };
+// });
+
     
