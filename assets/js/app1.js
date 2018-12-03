@@ -9,8 +9,23 @@ var firstTime = true;
 if ( typeof firstTime === undefined ) {  var firstTime = true; }
 console.log(firstTime) ;
 var mySymbols = ['AAPL','FB','GOOG','NFLX']; 
-
-
+var completeList = Array();
+var validationList = Array();
+function getCompleteList (thisUrl) { 
+  $.ajax({
+    url: thisUrl,
+    method: 'GET'
+  }).then( function(response) 
+             { 
+                MyDebug && alert( thisUrl ); 
+                MyDebug && alert( response ); 
+                completeList = response ;
+                lenMasterList=completeList.length ; 
+                for(i=0;i<lenMasterList;i++) validationList[i] = completeList[i].symbol ; 
+             });
+  
+  }
+getCompleteList(baseUrl);
 function testFunc () {
     if ( firstTime === true ) 
      {
@@ -48,9 +63,10 @@ function init1()
  init1();
  function checkMyTicker(thisUrl, myTicker){
     isValidSym=true;
+    isValidSym = ( validationList.indexOf(myTicker) !== -1 ) ; // && alert( myTicker + " is a valid ticker " ) ;
     // this part checks if the ticker exists 
-    console.log(thisUrl);
-    $.ajax({
+    
+    if ( isValidSym ) { $.ajax({
               url: thisUrl,
               type: 'GET',
               success: function(response) 
@@ -69,7 +85,7 @@ function init1()
                                      
                }
            }
-          );
+          ); } else { alert("ticker " + myTicker + " does not appear to be a real one"); }
     
     return isValidSym ; 
   }
@@ -82,6 +98,7 @@ function reply_click(clicked_id)
  MyDebug &&  alert(thisTick);
  MyUrl = baseUrl1+thisTick+"/batch?types=quote,news,company&range=5y&last=400" ; 
  console.log(MyUrl+" for additional info "); 
+ ( validationList.indexOf(thisTick) !== -1 ) && alert( thisTick + " is a valid ticker " ) ;
  $.ajax({
     url: MyUrl,
     method: 'GET'
