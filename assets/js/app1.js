@@ -98,7 +98,7 @@ function reply_click(clicked_id)
  MyDebug &&  alert(thisTick);
  MyUrl = baseUrl1+thisTick+"/batch?types=quote,news,company&range=5y&last=400" ; 
  console.log(MyUrl+" for additional info "); 
- ( validationList.indexOf(thisTick) !== -1 ) && alert( thisTick + " is a valid ticker " ) ;
+ ( ( validationList.indexOf(thisTick) !== -1 ) && MyDebug ) && alert( thisTick + " is a valid ticker " ) ;
  $.ajax({
     url: MyUrl,
     method: 'GET'
