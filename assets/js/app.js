@@ -1,4 +1,4 @@
-MyDebug = false ;
+MyDebug = true ;
 mySymbols = ['AAPL','FB','GOOG','NFLX','DOW']; 
 
 if ( typeof mySymbols == "undefined" || ! ( mySymbols instanceof Array ) ) 
