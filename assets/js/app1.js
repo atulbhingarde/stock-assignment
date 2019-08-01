@@ -1,6 +1,5 @@
-
-const MyDebug = false ;
-const baseUrl = "https://api.iextrading.com/1.0/ref-data/symbols"; 
+const MyDebug = true ;
+const baseUrl = "https://cloud-sse.iexapis.com/stable/news-stream&token=" ; 
 
 const baseUrl1 = "https://api.iextrading.com/1.0/stock/" ; //  to check if its a valid ticker 
 
@@ -25,6 +24,7 @@ function getCompleteList (thisUrl) {
              });
   
   }
+alert(baseUrl);
 getCompleteList(baseUrl);
 function testFunc () {
     if ( firstTime === true ) 
@@ -81,7 +81,7 @@ function init1()
                 },
               error: function(response) 
                {
-                alert( ' woops! symbol ' + myTicker + " " + thisUrl + ' does not work it retutrned ' + response.status ); //or whatever
+                alert( ' woops! symbol ' + myTicker + " " + thisUrl + ' does not work it returned ' + response.status ); //or whatever
                                      
                }
            }
@@ -96,7 +96,8 @@ function reply_click(clicked_id)
  // thisTick = clicked_id.innerText;
  thisTick = clicked_id ; 
  MyDebug &&  alert(thisTick);
- MyUrl = baseUrl1+thisTick+"/batch?types=quote,news,company&range=5y&last=400" ; 
+ MyUrl = baseUrl+"&"+thisTick+"/batch?types=quote,news,company&range=5y&last=400" ; 
+ alert(MyUrl);
  console.log(MyUrl+" for additional info "); 
  ( ( validationList.indexOf(thisTick) !== -1 ) && MyDebug ) && alert( thisTick + " is a valid ticker " ) ;
  $.ajax({
@@ -106,7 +107,7 @@ function reply_click(clicked_id)
                               MyDebug && alert( MyUrl ); 
                               MyDebug && alert( response ); 
                               // console.log(response.news[0].source);
-                              lcompanyName = response.quote.companyName ;
+                              // lcompanyName = response.quote.companyName ;
                               latestPrice =  response.quote.latestPrice ;
                               // news = response.news[0].headline ; 
                               news = response.news ; 
@@ -179,7 +180,8 @@ const buildQueryURL = function (thisSymbol) {
       .val()
       .trim();
     // queryURL = queryURL + queryParams + "/batch?types=news";
-    queryURL = queryURL + thisSymbol + "/batch?types=news";
+    // queryURL = queryURL + thisSymbol + "/batch?types=news";
+    queryURL = queryURL + "/batch?types=news";
     checkMyTicker(queryURL);
     // console.log(" here it is 1 " + queryURL+ $('#search-term').val().trim()+"/batch?types=news" );
     console.log(" here it is " + queryURL + " " + thisSymbol );
