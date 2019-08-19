@@ -1,3 +1,17 @@
+import { IEXCloudClient } from "node-iex-cloud";
+// import promise base library
+import fetch from "node-fetch";
+const iex = new IEXCloudClient(fetch, {
+  sandbox: true,
+  publishable: "pk_e674b7ba4f5d4801b0af5eec23529f6b",
+  version: "stable"
+});
+iex
+  // stock/google/financials?period=annual
+  .symbol("googl")
+  .financials("quarterly")
+  .then(res => console.log(res));
+  
 const MyDebug = true ;
 const baseUrl = "https://cloud-sse.iexapis.com/stable/news-stream&token=" ; 
 
