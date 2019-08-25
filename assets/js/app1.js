@@ -1,4 +1,6 @@
 const MyDebug = true ;
+require('dotenv').load();
+// MyDebug && alert(process.env.anotherkey);
 const baseUrl = "https://cloud-sse.iexapis.com/stable/news-stream&token=" ; 
 
 const baseUrl1 = "https://api.iextrading.com/1.0/stock/" ; //  to check if its a valid ticker 
@@ -98,6 +100,7 @@ function reply_click(clicked_id)
  MyDebug &&  alert(thisTick);
  MyUrl = baseUrl+"&"+thisTick+"/batch?types=quote,news,company&range=5y&last=400" ; 
  alert(MyUrl);
+ console.log(MyUrl);
  console.log(MyUrl+" for additional info "); 
  ( ( validationList.indexOf(thisTick) !== -1 ) && MyDebug ) && alert( thisTick + " is a valid ticker " ) ;
  $.ajax({
